@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navigation from "./Components/Navigation";
-import TeaBatchList from "./Components/Inventory/TeaBatchList";
 import AddTeaBatch from "./Components/Inventory/AddTeaBatch";
-import EmployeeList from "./Components/Employee/EmployeeList";
 import AddEmployee from "./Components/Employee/AddEmployee";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider, useAuth } from "./Components/Authcontext/Authcontext";
@@ -36,7 +34,7 @@ const InventoryPage = () => (
     <h2 className=" text-green-600 text-2xl font-semibold mb-4 text-center">
       Inventory Management
     </h2>
-    <TeaBatchList />
+    
     <AddTeaBatch />
   </div>
 );
@@ -46,7 +44,7 @@ const EmployeesPage = () => (
     <h2 className="text-2xl font-semibold mb-4 text-center text-green-600">
       Employee Management
     </h2>
-    <EmployeeList />
+
     <AddEmployee />
   </div>
 );
