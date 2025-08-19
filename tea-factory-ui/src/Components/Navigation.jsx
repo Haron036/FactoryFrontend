@@ -12,8 +12,12 @@ function Navigation() {
                     <Link to="/inventory" className="mr-4 hover:text-gray-300">Inventory</Link>
                     <Link to="/employees" className="hover:text-gray-300">Employees</Link>
                 </div>
+                 
             </div>
+            
+           
         </nav>
+        
     );
 }
 

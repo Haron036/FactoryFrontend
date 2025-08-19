@@ -5,6 +5,7 @@ import AddTeaBatch from "./Components/Inventory/AddTeaBatch";
 import AddEmployee from "./Components/Employee/AddEmployee";
 import { ToastContainer } from "react-toastify";
 import { AuthProvider, useAuth } from "./Components/Authcontext/Authcontext";
+import Footer from "./Components/Footer";
 
 const AdminRoute = ({ children }) => {
   const { isAuthenticated, userRole } = useAuth();
@@ -44,7 +45,6 @@ const EmployeesPage = () => (
     <h2 className="text-2xl font-semibold mb-4 text-center text-green-600">
       Employee Management
     </h2>
-
     <AddEmployee />
   </div>
 );
@@ -52,33 +52,33 @@ const EmployeesPage = () => (
 function App() {
   return (
     <AuthProvider>
-    <Router>
-      <div>
-        <Navigation />
-        <main className="flex-grow flex items-center justify-center w-full">
-          {" "}
-          {/* Added w-full here */}
-          <div className="px-4 py-8 w-full h-full flex items-center justify-center">
-            {" "}
-            {/* Removed container, added w-full */}
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/inventory/*" element={<InventoryPage />} />
-              <Route
-                path="/employees/add"
-                element={
-                  <AdminRoute>
-                    <AddEmployee />
-                  </AdminRoute>
-                }
-              />
-              <Route path="/employees/*" element={<EmployeesPage />} />
-            </Routes>
-            <ToastContainer />
-          </div>
-        </main>
-      </div>
-    </Router>
+      <Router>
+        {/* Changed the main container to use flex column with full viewport height */}
+        <div className="flex flex-col min-h-screen">
+          <Navigation />
+          {/* Main content area that grows to push footer down */}
+          <main className="flex-grow w-full">
+            <div className="px-4 py-8 w-full h-full flex items-center justify-center">
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/inventory/*" element={<InventoryPage />} />
+                <Route
+                  path="/employees/add"
+                  element={
+                    <AdminRoute>
+                      <AddEmployee />
+                    </AdminRoute>
+                  }
+                />
+                <Route path="/employees/*" element={<EmployeesPage />} />
+              </Routes>
+              <ToastContainer />
+            </div>
+          </main>
+          {/* Footer placed outside the main content area */}
+          <Footer />
+        </div>
+      </Router>
     </AuthProvider>
   );
 }
